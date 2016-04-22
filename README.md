@@ -137,6 +137,7 @@ sudo mv project.py __init__.py
 sudo nano __init__.py
 ```
 Set / update the following lines:
+
     * `engine = create_engine('postgresql://catalog:logcata@localhost/')`
     * `APP_PATH = os.path.dirname(__file__)`
     * `open(APP_PATH + '/client_secrets.json', 'r').read())['web']['client_id']`
