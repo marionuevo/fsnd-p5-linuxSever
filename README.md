@@ -136,20 +136,14 @@ Set: `engine = create_engine('postgresql://catalog:logcata@localhost/')`
 sudo mv project.py __init__.py
 sudo nano __init__.py
 ```
-Set this file to:
-```
-engine = create_engine('postgresql://catalog:logcata@localhost/')
-```
-```
-APP_PATH = os.path.dirname(__file__)
-```
-```
-open(APP_PATH + '/client_secrets.json', 'r').read())['web']['client_id']
-```
-```
-oauth_flow = flow_from_clientsecrets(APP_PATH + '/client_secrets.json', scope='')
-```
-Install the following packages:
+Set / update the following lines:
+    * `engine = create_engine('postgresql://catalog:logcata@localhost/')`
+    * `APP_PATH = os.path.dirname(__file__)`
+    * `open(APP_PATH + '/client_secrets.json', 'r').read())['web']['client_id']`
+    * `oauth_flow = flow_from_clientsecrets(APP_PATH + '/client_secrets.json', scope='')`
+
+
+* Install the following packages:
 ```
 sudo pip install flask-seasurf
 sudo apt-get -qqy install postgresql python-psycopg2
