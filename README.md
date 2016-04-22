@@ -19,19 +19,19 @@ https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-applicati
 
 ## Steps done in order to setup the server:
 
-* #### Creating user _grader_ and give _sudo_ permission:
+* Creating user _grader_ and give _sudo_ permission:
 ```
 adduser grader
 adduser grader sudo
 ```
 
-* #### Update all currently installed packages:
+* Update all currently installed packages:
 ```
 sudo apt-get update
 sudo apt-get upgrade
 ```
 
-* #### Generate ssh public-private key pair:
+* Generate ssh public-private key pair:
 At local machine:
 ```
 ssh-keygen
@@ -54,7 +54,7 @@ Logout and the login using:
 ssh -i ~/.ssh/id_rsa grader@52.37.52.10 -p 2200
 ```
 
-* #### Change the SSH port from 22 to 2200 and disable root login:
+* Change the SSH port from 22 to 2200 and disable root login:
 ```
 sudo nano /etc/ssh/sshd_config
 ```
@@ -63,7 +63,7 @@ Set: `Port 2200` and `PermitRootLogin no`
 sudo service ssh restart
 ```
 
-* #### Configure the Uncomplicated Firewall (UFW) to only allow incoming connections for SSH (port 2200), HTTP (port 80), and NTP (port 123):
+* Configure the Uncomplicated Firewall (UFW) to only allow incoming connections for SSH (port 2200), HTTP (port 80), and NTP (port 123):
 ```
 sudo ufw status
 sudo ufw default deny incoming
@@ -75,12 +75,12 @@ sudo ufw allow www
 sudo ufw enable
 ```
 
-* #### Configure the local timezone to UTC:
+* Configure the local timezone to UTC:
 ```
 sudo dpkg-reconfigure tzdata
 ```
 
-* #### Install and configure Apache to serve a Python mod_wsgi application:
+* Install and configure Apache to serve a Python mod_wsgi application:
 ```
 sudo apt-get install apache2
 sudo apt-get install libapache2-mod-wsgi
@@ -95,7 +95,7 @@ Restart the apache service:
 sudo apache2ctl restart
 ```
 
-* #### Install and configure PostgreSQL:
+* Install and configure PostgreSQL:
 ```
 sudo apt-get install postgresql
 ```
@@ -104,7 +104,7 @@ Check for remote connections:
 sudo nano /etc/postgresql/9.3/main/pg_hba.conf
 ```
 
-* #### Create a new user named catalog that has limited permissions to your catalog application database:
+* Create a new user named catalog that has limited permissions to your catalog application database:
 ```
 sudo su - postgres
 CREATE DATABASE catalog;
@@ -115,7 +115,7 @@ GRANT ALL PRIVILEGES ON DATABASE catalog TO catalog;
 exit
 ```
 
-* #### Install git, clone and setup your Catalog App project:
+* Install git, clone and setup your Catalog App project:
 ```
 sudo apt-get install git
 cd /var/www
@@ -155,7 +155,7 @@ sudo pip install flask-seasurf
 sudo apt-get -qqy install postgresql python-psycopg2
 ```
 
-* #### Test for everything is working fine:
+* Test for everything is working fine:
 ```
 sudo python __init__.py
 ```
@@ -164,7 +164,7 @@ Exit from the virtual environment:
 deactivate
 ```
 
-* #### Enable the itemCatalog site at apache:
+* Enable the itemCatalog site at apache:
 ```
 sudo nano /etc/apache2/sites-available/itemCatalog.conf
 ```
